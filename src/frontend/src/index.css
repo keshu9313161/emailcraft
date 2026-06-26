@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Clean white background */
+    --background: 0.99 0 0;
+    --foreground: 0.13 0.025 255;
+
+    --card: 0.98 0.004 250;
+    --card-foreground: 0.13 0.025 255;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.13 0.025 255;
+
+    /* Deep navy primary */
+    --primary: 0.26 0.075 258;
+    --primary-foreground: 0.99 0 0;
+
+    /* Light secondary */
+    --secondary: 0.94 0.008 250;
+    --secondary-foreground: 0.26 0.075 258;
+
+    --muted: 0.95 0.006 250;
+    --muted-foreground: 0.5 0.022 255;
+
+    /* Warm amber accent */
+    --accent: 0.78 0.16 65;
+    --accent-foreground: 0.13 0.025 255;
+
+    --destructive: 0.52 0.2 27;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.91 0.012 250;
+    --input: 0.91 0.012 250;
+    --ring: 0.26 0.075 258;
+
+    --radius: 0.5rem;
+
+    /* Placeholder amber */
+    --placeholder-color: 0.65 0.16 55;
+
+    /* Chart */
+    --chart-1: 0.55 0.18 258;
+    --chart-2: 0.55 0.14 160;
+    --chart-3: 0.78 0.16 65;
+    --chart-4: 0.45 0.12 285;
+    --chart-5: 0.68 0.17 30;
+
+    /* Sidebar */
+    --sidebar: 0.96 0.008 250;
+    --sidebar-foreground: 0.13 0.025 255;
+    --sidebar-primary: 0.26 0.075 258;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.92 0.01 250;
+    --sidebar-accent-foreground: 0.25 0.025 255;
+    --sidebar-border: 0.89 0.01 250;
+    --sidebar-ring: 0.26 0.075 258;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-feature-settings: "ss01", "ss02", "cv01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+}
+
+@layer components {
+  .placeholder-text {
+    color: oklch(var(--placeholder-color));
+    font-style: italic;
+  }
+
+  .tone-chip {
+    @apply inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium border transition-all duration-150 cursor-pointer select-none;
+    @apply border-border text-muted-foreground bg-transparent;
+  }
+
+  .tone-chip:hover {
+    @apply border-primary/50 text-foreground;
+  }
+
+  .tone-chip.active {
+    @apply bg-primary text-primary-foreground border-primary;
+  }
+
+  .step-indicator {
+    @apply flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold transition-all duration-200;
+  }
+
+  .step-indicator.completed {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .step-indicator.active {
+    @apply bg-primary text-primary-foreground ring-2 ring-primary/30 ring-offset-2;
+  }
+
+  .step-indicator.upcoming {
+    @apply bg-muted text-muted-foreground;
+  }
+}
+
+@layer utilities {
+  @keyframes marquee-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee-scroll 28s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+}
